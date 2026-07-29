@@ -1,48 +1,52 @@
 # Counterexample to Conjecture 2.1 of *Generalizing OOOOOOB*
 
-This repository contains a computational counterexample for Version B of Conjecture 2.1 in *Generalizing OOOOOOB*.
+This repository contains an exact computational counterexample to Conjecture 2.1 for Version B of *Generalizing OOOOOOB*.
 
-## Counterexample
+## Result
 
-Consider
-
-\[
-P=(5,5,5,5,5,5,5,6,6,6,6,6)=(5^7,6^5).
-\]
-
-For `k = 12`,
+Consider the position
 
 \[
-m=\lceil k/3\rceil=4.
+P=(5^7,6^5)=(5,5,5,5,5,5,5,6,6,6,6,6).
 \]
 
-Every pile has more than four tokens and exactly seven piles are odd, so the conjecture classifies `P` as losing.
-
-However, the legal move
+For \(k=12\),
 
 \[
-(5^7,6^5)\longrightarrow(4^7,5^5)=Q
+m=\left\lceil\frac{k}{3}\right\rceil=4.
 \]
 
-gives
+Every pile contains more than four tokens, and exactly seven piles are odd. Under Conjecture 2.1, this places \(P\) among the losing positions.
+
+The legal all-piles move gives
+
+\[
+P=(5^7,6^5)\longrightarrow Q=(4^7,5^5).
+\]
+
+Exact Sprague–Grundy computation yields
 
 \[
 g(P)=2,\qquad g(Q)=0.
 \]
 
-Therefore `P` is winning, contradicting the conjectured classification.
+Therefore \(P\) is winning, while \(Q\) is losing. This contradicts the conjectured classification.
 
 ## Verification
+
+Run the independent verifier with Python 3.9 or later:
 
 ```bash
 python verify_counterexample.py
 ```
 
-The exhaustive computation evaluates 17,640 canonical states.
+The computation checks the legal move, both Grundy values, and exactly \(17{,}640\) canonical states.
 
-## Files
+## Repository contents
 
-- [`COUNTEREXAMPLE.md`](COUNTEREXAMPLE.md): mathematical explanation.
-- [`verify_counterexample.py`](verify_counterexample.py): exact verifier.
+- [`COUNTEREXAMPLE.md`](COUNTEREXAMPLE.md): mathematical statement and verification.
+- [`verify_counterexample.py`](verify_counterexample.py): exact recursive verifier.
 
-Original paper: [arXiv:2605.23213](https://arxiv.org/abs/2605.23213)
+## Reference
+
+A. Danai, P. Ellis and T. Aek Thanatipanonda, *Generalizing OOOOOOB*, [arXiv:2605.23213v1](https://arxiv.org/abs/2605.23213).
