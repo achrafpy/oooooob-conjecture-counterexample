@@ -1,0 +1,28 @@
+cff-version: 1.2.0
+message: "If you use this counterexample or its verifier, please cite this repository."
+title: "Exact counterexample to Conjecture 2.1 of Generalizing OOOOOOB"
+type: software
+authors:
+  - family-names: "El Angoudi El Haddadi"
+    given-names: "Achraf"
+repository-code: "https://github.com/achrafpy/oooooob-conjecture-counterexample"
+url: "https://github.com/achrafpy/oooooob-conjecture-counterexample"
+version: "1.0.0"
+date-released: "2026-07-29"
+keywords:
+  - combinatorial game theory
+  - Sprague-Grundy theory
+  - counterexample
+  - impartial games
+references:
+  - type: article
+    title: "Generalizing OOOOOOB"
+    authors:
+      - family-names: "Danai"
+        given-names: "Alon"
+      - family-names: "Ellis"
+        given-names: "Paul"
+      - family-names: "Aek Thanatipanonda"
+        given-names: "Thotsaporn"
+    year: 2026
+    url: "https://arxiv.org/abs/2605.23213"
