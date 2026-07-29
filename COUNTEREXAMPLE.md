@@ -1,42 +1,66 @@
-# Counterexample to Conjecture 2.1
+# A counterexample to Conjecture 2.1
 
-This note records a computational counterexample for Version B of *Generalizing OOOOOOB*.
+This note records an exact computational counterexample to Conjecture 2.1 for Version B of *Generalizing OOOOOOB*.
 
-## Conjectured classification
+## Statement under consideration
 
-For `k = 12`, let
+Let \(k\geq 3\) denote the number of piles and define
 
 \[
-m=\left\lceil\frac{12}{3}\right\rceil=4.
+m=\left\lceil\frac{k}{3}\right\rceil.
 \]
 
-The conjecture classifies positions with seven odd piles as losing when every pile has more than four tokens.
+For \(k\equiv 0\pmod 4\), the conjecture classifies a position as losing, under the stated lower bound on pile sizes, when the number of odd piles belongs to
+
+\[
+0,2,4,\ldots,\frac{k}{2}-2,\frac{k}{2}+1,\frac{k}{2}+3,\ldots,k-1.
+\]
+
+For \(k=12\), this set is
+
+\[
+\{0,2,4,7,9,11\}.
+\]
 
 ## Counterexample
 
-Take
+Consider
 
 \[
 P=(5^7,6^5)=(5,5,5,5,5,5,5,6,6,6,6,6).
 \]
 
-All twelve piles have more than four tokens and exactly seven piles are odd, so the conjecture predicts that `P` is losing.
+Here \(k=12\) and
 
-The legal all-piles move gives
+\[
+m=\left\lceil\frac{12}{3}\right\rceil=4.
+\]
+
+Every pile contains more than four tokens, and exactly seven piles are odd. The conjecture therefore classifies \(P\) as a losing position.
+
+In Version B, removing one token from every pile is a legal move. Applied to \(P\), it gives
 
 \[
 P=(5^7,6^5)\longrightarrow Q=(4^7,5^5).
 \]
 
-Exact Sprague–Grundy computation gives
+The exact Sprague–Grundy computation yields
 
 \[
 g(P)=2,\qquad g(Q)=0.
 \]
 
-Therefore `P` is winning and `Q` is losing. Hence `P` contradicts the conjectured classification.
+Thus \(Q\) is a losing position and \(P\) is a winning position. Consequently, \(P\) does not satisfy the outcome classification asserted by Conjecture 2.1.
 
-## Verification
+## Computational verification
+
+The accompanying program computes the Sprague–Grundy function recursively on canonical positions. It verifies that
+
+\[
+g(P)=2,\qquad g(Q)=0,\qquad Q\in\operatorname{Opt}(P),
+\]
+
+and evaluates exactly \(17{,}640\) canonical states.
 
 Run:
 
@@ -44,6 +68,6 @@ Run:
 python verify_counterexample.py
 ```
 
-The verifier checks the legal move, both Grundy values, and 17,640 canonical states.
+## Reference
 
-Original paper: [arXiv:2605.23213](https://arxiv.org/abs/2605.23213)
+A. Danai, P. Ellis and T. Aek Thanatipanonda, *Generalizing OOOOOOB*, arXiv:2605.23213v1.
